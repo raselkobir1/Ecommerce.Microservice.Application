@@ -1,4 +1,7 @@
 using Catelog.API.DbContext;
+using Catelog.API.HostingService;
+using Catelog.API.Interfaces.Manager;
+using Catelog.API.Manager;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +12,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHostedService<AppHostedService>();
+builder.Services.AddScoped<IProductManager, ProductManager>();
 //builder.Services.AddSingleton<CatalogDbContext>();
 
 var app = builder.Build();
