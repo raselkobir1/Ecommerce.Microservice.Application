@@ -125,11 +125,11 @@ namespace Catelog.API.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
         [ResponseCache(Duration = 10)]
-        public IActionResult GetByCatatory(string catatory) 
+        public IActionResult GetByCatetory(string category)  
         {
             try
             {
-                var products = _productManager.GetByCatagory(catatory);
+                var products = _productManager.GetByCatagory(category);
                 return CustomResult("Data load successfully",products);
             }
             catch (Exception ex)
