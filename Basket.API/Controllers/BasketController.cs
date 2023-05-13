@@ -1,4 +1,5 @@
-﻿using Basket.API.Repository;
+﻿using Basket.API.Models;
+using Basket.API.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using CoreApiResponse;
@@ -16,13 +17,13 @@ namespace Basket.API.Controllers
         {
             _basketRepository = basketRepository;
         }
-        [HttpGet]   
+        [HttpGet]
         public async Task<IActionResult> GetBasket(string userName)
         {
             try
             {
                 var basket = await _basketRepository.GetBasket(userName);
-                return CustomResult("Basket data load successfully",basket);
+                return CustomResult("Basket data load successfully",basket);  
             }
             catch (Exception ex)
             {
