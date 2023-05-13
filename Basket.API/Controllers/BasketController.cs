@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using CoreApiResponse;
 using System.Net;
-using Basket.API.Models;
 
 namespace Basket.API.Controllers
 {
@@ -18,6 +17,7 @@ namespace Basket.API.Controllers
             _basketRepository = basketRepository;
         }
         [HttpGet]
+        [ProducesResponseType(typeof(ShoppingCart), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetBasket(string userName)
         {
             try
