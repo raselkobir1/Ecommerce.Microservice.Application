@@ -1,27 +1,28 @@
 ﻿using Basket.API.Models;
 using Basket.API.Repository;
-using CoreApiResponse;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using CoreApiResponse;
 using System.Net;
 
 namespace Basket.API.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]/[Action]")]
     [ApiController]
     public class BasketController : BaseController
     {
-        private readonly IBusketRepository _busketRepository;
-        public BasketController(IBusketRepository busketRepository)
+        private readonly IBusketRepository _basketRepository;
+        public BasketController(IBusketRepository basketRepository)
         {
-            _busketRepository = busketRepository;   
+            _basketRepository = basketRepository;
         }
         [HttpGet]
-        [ProducesResponseType(typeof(ShoppingCart),(int)HttpStatusCode.OK)]
-        public async Task<IActionResult>GetBusket(string userName)
+        [ProducesResponseType(typeof(ShoppingCart), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> GetBasket(string userName)
         {
             try
             {
-                var basket = await _busketRepository.GetBasket(userName);
+                var basket = await _basketRepository.GetBasket(userName);
                 return CustomResult("Basket data load successfully",basket);  
             }
             catch (Exception ex)
@@ -30,12 +31,12 @@ namespace Basket.API.Controllers
             }
         }
         [HttpPost]
-        [ProducesResponseType(typeof (ShoppingCart),(int)HttpStatusCode.OK)] 
-        public async Task<IActionResult> UpdateBasket([FromBody] ShoppingCart shoppingCart)
+        [ProducesResponseType(typeof(ShoppingCart), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> UpdateBasket([FromBody] ShoppingCart basket)
         {
             try
             {
-                return CustomResult("Basket modied done.", await _busketRepository.UpdateBasket(shoppingCart));
+                return CustomResult("Basket modified done.", await _basketRepository.UpdateBasket(basket));
             }
             catch (Exception ex)
             {
@@ -43,12 +44,12 @@ namespace Basket.API.Controllers
             }
         }
         [HttpDelete]
-        [ProducesResponseType(typeof(void),(int)HttpStatusCode.OK)]
-        public async Task<IActionResult>DeleteBasket(string userName)
+        [ProducesResponseType(typeof(void), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> DeleteBasket(string userName)
         {
             try
             {
-                await _busketRepository.DeleteBasket(userName);
+                await _basketRepository.DeleteBasket(userName);
                 return CustomResult("Basket has been deleted.");
             }
             catch (Exception ex)
