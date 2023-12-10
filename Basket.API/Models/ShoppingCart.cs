@@ -6,10 +6,7 @@
         {
             UserName = userName;    
         }
-        public ShoppingCart()
-        {
-
-        }
+        public ShoppingCart(){} //default constructor
         public string UserName { get; set; }
         public List<ShoppingCartItem> Items { get; set; } = new List<ShoppingCartItem>();
         public decimal TotalPrice 
