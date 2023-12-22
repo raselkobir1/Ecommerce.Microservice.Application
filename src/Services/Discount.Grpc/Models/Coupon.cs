@@ -1,6 +1,6 @@
 ﻿namespace Discount.Grpc.Models
 {
-    public class Coupon 
+    public class Coupon
     {
         public int Id { get; set; }
         public string? ProductId { get; set; }

@@ -1,6 +1,6 @@
 ﻿using Discount.Grpc.Models;
 
-namespace Discount.Grpc.Repository 
+namespace Discount.Grpc.Repository
 {
     public interface ICouponRepository
     {

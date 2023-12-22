@@ -4,7 +4,7 @@ using Npgsql;
 
 namespace Discount.Grpc.Repository
 {
-    public class CouponRepository : ICouponRepository 
+    public class CouponRepository : ICouponRepository
     {
         private readonly IConfiguration _configuration;
         public CouponRepository(IConfiguration configuration)
@@ -31,7 +31,7 @@ namespace Discount.Grpc.Repository
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -50,7 +50,7 @@ namespace Discount.Grpc.Repository
             catch (Exception ex)
             {
 
-                throw ex;
+                throw;
             }
         }
 
@@ -71,7 +71,7 @@ namespace Discount.Grpc.Repository
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -95,7 +95,7 @@ namespace Discount.Grpc.Repository
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
         }
     }

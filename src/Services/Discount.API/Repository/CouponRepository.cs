@@ -31,7 +31,7 @@ namespace Discount.API.Repository
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -50,7 +50,7 @@ namespace Discount.API.Repository
             catch (Exception ex)
             {
 
-                throw ex;
+                throw;
             }
         }
 
@@ -71,7 +71,7 @@ namespace Discount.API.Repository
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -95,7 +95,7 @@ namespace Discount.API.Repository
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
         }
     }
