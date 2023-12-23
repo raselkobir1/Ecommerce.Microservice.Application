@@ -65,7 +65,7 @@ namespace Discount.Grpc.Repository
                 var coupon = await connection.QueryFirstOrDefaultAsync<Coupon>(sql, new { ProductId= productId });
                 if(coupon == null)
                 {
-                    return new Coupon() { Amount = 0, ProductName = "No Discount" };
+                    return new Coupon() { Amount = 0, ProductName = "No Discount", ProductId = "No Discount", Description = "No Discount" };
                 }
                 return coupon;  
             }
