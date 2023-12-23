@@ -9,9 +9,9 @@ namespace Discount.Grpc.Services
     public class DiscountService : DiscountProtoService.DiscountProtoServiceBase
     {
         private readonly ICouponRepository _couponRepository;
-        private readonly ILogger _logger;
+        private readonly ILogger<DiscountService> _logger;
         private readonly IMapper _mapper;
-        public DiscountService(ICouponRepository couponRepository, ILogger logger, IMapper mapper)
+        public DiscountService(ICouponRepository couponRepository, ILogger<DiscountService> logger, IMapper mapper)
         {
             _couponRepository = couponRepository;
             _logger = logger;
