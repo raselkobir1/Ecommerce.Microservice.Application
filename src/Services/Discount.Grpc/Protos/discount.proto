@@ -25,5 +25,5 @@ message DeleteCouponRequest {
 	string product_id = 1;
 }
 message DeleteCouponResponse { 
-	string success = 1;
+	bool success = 1;
 }
