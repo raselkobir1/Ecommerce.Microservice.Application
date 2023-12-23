@@ -6,7 +6,7 @@ service DiscountProtoService{
 	rpc GetDiscount(GetDiscountRequest) returns(CouponRequest);
 	rpc CreateDiscount(CouponRequest) returns(CouponRequest);
 	rpc UpdateDiscount(CouponRequest) returns(CouponRequest);
-	rpc DeleteDiscount(DeleteCouponRequest) returns(DeleteCouponRequest);
+	rpc DeleteDiscount(DeleteCouponRequest) returns(DeleteCouponResponse);
 }
 
 message GetDiscountRequest {
@@ -24,6 +24,6 @@ message CouponRequest {
 message DeleteCouponRequest {
 	string product_id = 1;
 }
-message DeleteCouponRequest { 
+message DeleteCouponResponse { 
 	string success = 1;
 }
