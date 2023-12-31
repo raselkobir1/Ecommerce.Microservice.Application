@@ -7,12 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\Orders\Queries\GetOrdersByUserName\GetOrdersByUserHandler.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Ordering.Domain\Ordering.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Behaviours\" />
-    <Folder Include="Features\Orders\Commands\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Features\Orders\Queries\GetOrdersByUserName\GetOrdersByUserHandler.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,15 +1,10 @@
 ﻿using AutoMapper;
 using MediatR;
 using Ordering.Application.Contracts.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ordering.Application.Features.Orders.Queries.GetOrdersByUserName
 {
-    internal class GetOrdersByUserHandler : IRequestHandler<GetOrdersByUserQuery, List<OrderDto>>
+    public class GetOrdersByUserHandler : IRequestHandler<GetOrdersByUserQuery, List<OrderDto>>
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IMapper _mapper;
