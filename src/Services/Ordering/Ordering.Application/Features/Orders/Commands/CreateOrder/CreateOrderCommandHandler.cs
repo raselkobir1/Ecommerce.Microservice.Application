@@ -30,7 +30,7 @@ namespace Ordering.Application.Features.Orders.Commands.CreateOrder
             if (isOrderPlaced) {
                 var email = new Email();
                 email.To.Add(request.UserName);
-                email.Subject = "Your Order has beed placed.";
+                email.Subject = "Your Order has been placed.";
                 email.Body = $"Dear {request.FirstName} {request.LastName} <br/><br/> Thank you for placed an order.<br/> Your order number is #{request.Id}";
                 await _emailService.SendEmailAsync(email);
             }
