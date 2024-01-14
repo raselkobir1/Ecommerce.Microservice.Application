@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Ordering.Application.Features.Orders.Commands.DeleteOrder
 {
-    internal class DeleteOrderCommandHandler : IRequestHandler<DeleteOrderCommand, bool>
+    public class DeleteOrderCommandHandler : IRequestHandler<DeleteOrderCommand, bool>
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IMapper _mapper;
