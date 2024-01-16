@@ -37,11 +37,11 @@ namespace Ordering.API.Controllers
         }
         [HttpPost]
         [ProducesResponseType(typeof(string), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> CreateOrder(CreateOrderCommand orderCommand)
+        public async Task<IActionResult> CreateOrder(CreateOrderCommand orderCreateCommand)
         {
             try
             {
-                var isOrderPlaced = await _mediator.Send(orderCommand); 
+                var isOrderPlaced = await _mediator.Send(orderCreateCommand); 
                 if (isOrderPlaced)
                     return CustomResult("Order successfully placed");
                 return CustomResult("Order not placed");
@@ -55,11 +55,11 @@ namespace Ordering.API.Controllers
 
         [HttpPut]
         [ProducesResponseType(typeof(string), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> UpdateOrder(UpdateOrderCommand orderCommand)
+        public async Task<IActionResult> UpdateOrder(UpdateOrderCommand orderUpdateCommand)
         {
             try
             {
-                var isOrderModified = await _mediator.Send(orderCommand);
+                var isOrderModified = await _mediator.Send(orderUpdateCommand);
                 if (isOrderModified)
                     return CustomResult("Order successfully modified");
                 return CustomResult("Order modified failed");
