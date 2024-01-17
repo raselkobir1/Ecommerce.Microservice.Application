@@ -1,3 +1,4 @@
+using Ordering.API;
 using Ordering.Application.Contracts.Infrastructure;
 using Ordering.Infrastructure.Email;
 
@@ -5,9 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddApplicationServices();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddOptions<EmailSetting>().BindConfiguration(nameof(EmailSetting)).ValidateDataAnnotations();
-
 
 
 builder.Services.AddControllers();
