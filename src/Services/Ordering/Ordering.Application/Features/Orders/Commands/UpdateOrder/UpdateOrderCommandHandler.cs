@@ -17,6 +17,8 @@ namespace Ordering.Application.Features.Orders.Commands.UpdateOrder
         public async Task<bool> Handle(UpdateOrderCommand request, CancellationToken cancellationToken)
         {
             var order = _mapper.Map<Order>(request);
+            order.UpdatedBy = "2";
+            order.UpdatedDate = DateTime.Now;
             var result = await _orderRepository.UpdateAsync(order);
             return result;
 

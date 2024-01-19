@@ -1,6 +1,11 @@
 ﻿using AutoMapper;
 using MediatR;
 using Ordering.Application.Contracts.Persistence;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Ordering.Application.Features.Orders.Queries.GetOrdersByUserName
 {
@@ -12,7 +17,7 @@ namespace Ordering.Application.Features.Orders.Queries.GetOrdersByUserName
         {
             _orderRepository = orderRepository;
             _mapper = mapper;
-        } 
+        }
         public async Task<List<OrderDto>> Handle(GetOrdersByUserQuery request, CancellationToken cancellationToken)
         {
             var order = await _orderRepository.GetOrdersByUserName(request.UserName);
@@ -20,9 +25,3 @@ namespace Ordering.Application.Features.Orders.Queries.GetOrdersByUserName
         }
     }
 }
-
-/*
- * Cancellation token:
- A cancellation token is used for cancelling asynchronous database operations when necessary. 
-It ensures a better user experience in application by allowing users to cancel long running database operations
- */

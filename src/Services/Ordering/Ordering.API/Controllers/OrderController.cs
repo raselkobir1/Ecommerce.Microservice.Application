@@ -1,12 +1,10 @@
 ﻿using CoreApiResponse;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Ordering.Application.Features.Orders.Commands.CreateOrder;
 using Ordering.Application.Features.Orders.Commands.DeleteOrder;
 using Ordering.Application.Features.Orders.Commands.UpdateOrder;
 using Ordering.Application.Features.Orders.Queries.GetOrdersByUserName;
-using Ordering.Domain.Models;
 using System.Net;
 
 namespace Ordering.API.Controllers

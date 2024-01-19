@@ -29,6 +29,8 @@ namespace Ordering.Application.Features.Orders.Commands.UpdateOrder
         public string Expiration { get; set; }
         public int PaymentMethod { get; set; }
 
+        public string CreatedBy { get; set; } = string.Empty;
+        public DateTime? CreatedDate { get; set; } 
         public string UpdateBy { get; set; } = string.Empty;
         public DateTime? UpdateDate { get; set; } 
     }

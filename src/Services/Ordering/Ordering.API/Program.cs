@@ -1,15 +1,16 @@
+using MediatR;
 using Ordering.API;
 using Ordering.Infrastructure;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddOrderServices();
-builder.Services.AddInfrastureService(builder.Configuration);
-builder.Services.AddApplicationServices();
-
-
 builder.Services.AddControllers();
+// Add services to the container.
+builder.Services.AddApplicationServices();
+builder.Services.AddInfrastureService(builder.Configuration);
+builder.Services.AddOrderServices();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
