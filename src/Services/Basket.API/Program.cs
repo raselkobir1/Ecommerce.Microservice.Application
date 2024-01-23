@@ -2,6 +2,7 @@ using Basket.API.GrpcServices;
 using Basket.API.Repository;
 using Discount.Grpc.Protos;
 using MassTransit;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +13,7 @@ builder.Services.AddStackExchangeRedisCache(options =>
 builder.Services.AddScoped<DiscountGrpcService>();
 
 builder.Services.AddControllers();
-//register grpc client
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 // RabbitMQ configuration
 builder.Services.AddMassTransit(config =>
 {
@@ -21,6 +22,8 @@ builder.Services.AddMassTransit(config =>
         cfg.Host(builder.Configuration["EventBusSettings:RabbitMqHost"]);
     });
 });
+
+//register grpc client
 builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(option =>
 {
     option.Address = new Uri(builder.Configuration.GetValue<string>("GrpcSettings:DiscountGrpcUrl"));
