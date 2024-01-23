@@ -86,7 +86,15 @@ namespace Basket.API.Controllers
             //send checkout event to RabbitMQ
             var eventMassage = _mapper.Map<BasketCheckoutEvent>(basketCheckout);
             eventMassage.TotalPrice = basket.TotalPrice;
-            await _publishEndpoint.Publish(eventMassage);
+            try
+            {
+                await _publishEndpoint.Publish(eventMassage);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
 
             //Remove checkout item from basket. 
             await _basketRepository.DeleteBasket(basket.UserName);  
