@@ -1,7 +1,10 @@
+using MassTransit;
 using MediatR;
 using Ordering.API;
 using Ordering.Infrastructure;
 using System.Reflection;
+using EventBus.Messages.Common;
+using Ordering.API.EventBusConsumer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +19,20 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+// RabbitMQ configuration
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.AddMassTransit(config =>
+{
+    config.AddConsumer<BasketCheckoutConsumer>();
+    config.UsingRabbitMq((ctx, cfg) =>
+    {
+        cfg.Host(builder.Configuration["EventBusSettings:RabbitMqHost"]);
+        cfg.ReceiveEndpoint(EventBusList.BasketCheckoutQueue, c =>
+        {
+            c.ConfigureConsumer<BasketCheckoutConsumer>(ctx);
+        });
+    });
+});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
