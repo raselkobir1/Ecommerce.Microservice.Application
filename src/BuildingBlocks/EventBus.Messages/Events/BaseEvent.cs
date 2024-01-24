@@ -10,10 +10,11 @@ namespace EventBus.Messages.Events
     {
         public BaseEvent()
         {
-            Id = Guid.NewGuid();
+            //Id = Guid.NewGuid();
             CreatedDate = DateTime.Now;
         }
-        public Guid Id { get; set; }
+        //public Guid Id { get; set; }
+        public long Id { get; set; }
         public DateTime CreatedDate { get; set; } 
     }
 }

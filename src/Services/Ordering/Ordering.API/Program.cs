@@ -18,9 +18,8 @@ builder.Services.AddOrderServices();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
-// RabbitMQ configuration
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+// RabbitMQ configuration
 builder.Services.AddMassTransit(config =>
 {
     config.AddConsumer<BasketCheckoutConsumer>();
@@ -33,6 +32,8 @@ builder.Services.AddMassTransit(config =>
         });
     });
 });
+
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment() || app.Environment.IsProduction())

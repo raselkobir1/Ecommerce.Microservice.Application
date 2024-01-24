@@ -17,7 +17,7 @@ namespace Ordering.API.EventBusConsumer
             _mediator = mediator;
             _logger = logger;   
             _mapper = mapper;   
-        }
+        }   
         public async Task Consume(ConsumeContext<BasketCheckoutEvent> context)
         {
             var orderData = _mapper.Map<CreateOrderCommand>(context.Message);  
